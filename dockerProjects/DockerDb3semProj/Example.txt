@@ -1,0 +1,4 @@
+# Copy this file to .env and set a strong password before running docker compose.
+# SQL Server password rules: at least 8 chars, uppercase, lowercase, number, symbol.
+
+MSSQL_SA_PASSWORD=Write your password
