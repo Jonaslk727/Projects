@@ -31,11 +31,14 @@ docker compose ps
 The `sqlserver` service should show as healthy.
 
 ## Connect from local apps
-- Host: `localhost`
+- Host/ server name: `localhost`
 - Port: `1433`
 - User: `sa`
 - Password: value from `.env`
 - Database: `ImageDatabase`
+
+- choose SQL validation
+- choose trust the database or server cirtification
 
 ## Reset to clean state
 If you want to recreate schema and seed data from scratch:
