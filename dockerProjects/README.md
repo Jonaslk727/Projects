@@ -2,6 +2,8 @@
 
 This project runs Microsoft SQL Server in Docker and initializes a shared test database schema + mock data that every teammate can run locally.
 
+Run the commands below from `DockerDb3semProj`.
+
 ## What it creates
 - SQL Server 2022 container
 - Database: `ImageDatabase`
@@ -12,10 +14,14 @@ This project runs Microsoft SQL Server in Docker and initializes a shared test d
 - Docker Desktop (or Docker Engine + Compose)
 
 ## First-time setup
-1. Create `.env` from the example:
+1. Create a `.env` file from the example:
    - PowerShell:
      ```powershell
-     Copy-Item .env.example .env
+     Copy-Item Example.txt .env
+     ```
+   - Linux or WSL:
+     ```bash
+     cp Example.txt .env
      ```
 2. Edit `.env` and set `MSSQL_SA_PASSWORD`.
 
@@ -37,8 +43,8 @@ The `sqlserver` service should show as healthy.
 - Password: value from `.env`
 - Database: `ImageDatabase`
 
-- choose SQL validation
-- choose trust the database or server cirtification
+- Choose SQL Server authentication.
+- Trust the server certificate if your client prompts for it.
 
 ## Reset to clean state
 If you want to recreate schema and seed data from scratch:
