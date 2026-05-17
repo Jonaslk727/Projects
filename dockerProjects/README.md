@@ -37,8 +37,9 @@ docker compose ps
 The `sqlserver` service should show as healthy.
 
 ## Connect from local apps
-- Host/ server name: `localhost`
+- Host: `localhost`
 - Port: `1433`
+- Server name: `localhost, 1433`
 - User: `sa`
 - Password: value from `.env`
 - Database: `ImageDatabase`
