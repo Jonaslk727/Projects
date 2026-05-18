@@ -26,14 +26,24 @@ Run the commands below from `DockerDb3semProj`.
 2. Edit `.env` and set `MSSQL_SA_PASSWORD`.
 
 ## Start database
-```powershell
-docker compose up -d --build
-```
+- PowerShell:
+  ```powershell
+  docker compose up -d --build
+  ```
+- Bash (Linux/macOS/WSL):
+  ```bash
+  docker compose up -d --build
+  ```
 
 ## Check health
-```powershell
-docker compose ps
-```
+- PowerShell:
+  ```powershell
+  docker compose ps
+  ```
+- Bash (Linux/macOS/WSL):
+  ```bash
+  docker compose ps
+  ```
 The `sqlserver` service should show as healthy.
 
 ## Connect from local apps
@@ -49,20 +59,36 @@ The `sqlserver` service should show as healthy.
 
 ## Reset to clean state
 If you want to recreate schema and seed data from scratch:
-```powershell
-docker compose down -v
-docker compose up -d --build
-```
+- PowerShell:
+  ```powershell
+  docker compose down -v
+  docker compose up -d --build
+  ```
+- Bash (Linux/macOS/WSL):
+  ```bash
+  docker compose down -v
+  docker compose up -d --build
+  ```
 
 ## Useful commands
 - View logs:
-  ```powershell
-  docker compose logs -f sqlserver
-  ```
+  - PowerShell:
+    ```powershell
+    docker compose logs -f sqlserver
+    ```
+  - Bash (Linux/macOS/WSL):
+    ```bash
+    docker compose logs -f sqlserver
+    ```
 - Stop container:
-  ```powershell
-  docker compose down
-  ```
+  - PowerShell:
+    ```powershell
+    docker compose down
+    ```
+  - Bash (Linux/macOS/WSL):
+    ```bash
+    docker compose down
+    ```
 
 ## Notes
 - Database files are persisted in a Docker volume (`sql_data`).
@@ -81,19 +107,47 @@ By default it uses the existing image.
 If you run up with --build, it rebuilds first, then starts.
 
 ### down
-Stops and removes containers and the compose network.
-It does not remove volumes unless you add -v.
-If you use down -v, your database volume is deleted too.
+- Stops and removes containers and the compose network.
+- It does not remove volumes unless you add -v.
+- If you use down -v, your database volume is deleted too.
 
 ---
 
 ### Quick mental model:
+- build = make image
+- up = run app
+- down = stop and remove runtime resources
 
-build = make image
-up = run app
-down = stop and remove runtime resources
-For your SQL project:
+## For your SQL project:
+- Use up -d --build after changing Dockerfile or init scripts.
+- Use down when done.
+- Use down -v only when you want a full DB reset.
 
-Use up -d --build after changing Dockerfile or init scripts.
-Use down when done.
-Use down -v only when you want a full DB reset.
+### Command examples
+- Build only:
+  - PowerShell:
+    ```powershell
+    docker compose build
+    ```
+  - Bash (Linux/macOS/WSL):
+    ```bash
+    docker compose build
+    ```
+- Start services:
+  - PowerShell:
+    ```powershell
+    docker compose up -d
+    ```
+  - Bash (Linux/macOS/WSL):
+    ```bash
+    docker compose up -d
+    ```
+- Stop and remove services:
+  - PowerShell:
+    ```powershell
+    docker compose down
+    ```
+  - Bash (Linux/macOS/WSL):
+    ```bash
+    docker compose down
+    ```
