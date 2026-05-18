@@ -11,6 +11,13 @@ GO
 USE ImageDatabase;
 GO
 
+CREATE TABLE Users (
+    OwnerUid VARCHAR(128) NOT NULL PRIMARY KEY,
+    TelegramChatId VARCHAR(128) NULL,
+    ReportFrequency INT NOT NULL DEFAULT 7,
+    ReportEnabled BIT NOT NULL DEFAULT 1
+);
+
 -- Create Users table
 CREATE TABLE Images (
     Id VARCHAR(50) NOT NULL PRIMARY KEY,
@@ -29,12 +36,6 @@ CREATE TABLE Images (
 );
 
 
-CREATE TABLE Users (
-    OwnerUid VARCHAR(128) NOT NULL PRIMARY KEY,
-    TelegramChatId VARCHAR(128) NULL,
-    ReportFrequency INT NOT NULL DEFAULT 7,
-    ReportEnabled BIT NOT NULL DEFAULT 1
-);
 
 CREATE INDEX IX_Images_OwnerUid ON Images(OwnerUid);
 CREATE INDEX IX_Images_TimeStamp ON Images(TimeStamp);
