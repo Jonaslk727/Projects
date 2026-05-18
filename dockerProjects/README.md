@@ -67,3 +67,33 @@ docker compose up -d --build
 ## Notes
 - Database files are persisted in a Docker volume (`sql_data`).
 - Initialization runs on container startup via `init/entrypoint.sh`.
+
+## Docker Compose
+They are three different actions in Docker Compose:
+
+### build
+Builds the image from your Dockerfile.
+It does not start containers.
+
+### up
+Creates and starts containers, network, and attached resources.
+By default it uses the existing image.
+If you run up with --build, it rebuilds first, then starts.
+
+### down
+Stops and removes containers and the compose network.
+It does not remove volumes unless you add -v.
+If you use down -v, your database volume is deleted too.
+
+---
+
+### Quick mental model:
+
+build = make image
+up = run app
+down = stop and remove runtime resources
+For your SQL project:
+
+Use up -d --build after changing Dockerfile or init scripts.
+Use down when done.
+Use down -v only when you want a full DB reset.
