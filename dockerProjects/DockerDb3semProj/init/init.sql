@@ -18,6 +18,7 @@ CREATE TABLE Users (
     ReportEnabled BIT NOT NULL DEFAULT 1
 );
 
+GO
 -- Create Users table
 CREATE TABLE Images (
     Id VARCHAR(50) NOT NULL PRIMARY KEY,
