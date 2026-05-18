@@ -12,19 +12,11 @@ USE ImageDatabase;
 GO
 
 -- Create Users table
-CREATE TABLE Users (
-    OwnerUid VARCHAR(128) NOT NULL PRIMARY KEY,
-    TelegramChatId VARCHAR(128) NULL,
-    ReportFrequency INT NOT NULL DEFAULT 7,
-    ReportEnabled BIT NOT NULL DEFAULT 1
-);
-
--- Create Images table
 CREATE TABLE Images (
     Id VARCHAR(50) NOT NULL PRIMARY KEY,
-    TimeStamp VARCHAR(50) NOT NULL,
+    TimeStamp datetime NOT NULL,
     ImageType VARCHAR(50) NOT NULL,
-    ImageData VARBINARY(MAX) NOT NULL,
+    ImagePath VARCHAR(255) NOT NULL,
     Description VARCHAR(500) NULL,
     Confidence REAL NULL DEFAULT 0.0,
     DetectedObject VARCHAR(200) NULL,
@@ -34,6 +26,14 @@ CREATE TABLE Images (
         FOREIGN KEY (OwnerUid)
         REFERENCES Users(OwnerUid)
         ON DELETE SET NULL
+);
+
+
+CREATE TABLE Users (
+    OwnerUid VARCHAR(128) NOT NULL PRIMARY KEY,
+    TelegramChatId VARCHAR(128) NULL,
+    ReportFrequency INT NOT NULL DEFAULT 7,
+    ReportEnabled BIT NOT NULL DEFAULT 1
 );
 
 CREATE INDEX IX_Images_OwnerUid ON Images(OwnerUid);
